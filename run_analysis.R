@@ -1,3 +1,6 @@
+library(plyr)
+library(reshape2)
+
 #Merges the training and the test sets to create one data set.
 activitylabels<-read.table(file="UCI HAR Dataset/activity_labels.txt")
 features<-read.table(file="UCI HAR Dataset/features.txt")
@@ -30,11 +33,13 @@ summarydata <- cbind(labels,subjects,meandata,stddata)
 
 #Appropriately labels the data set with descriptive variable names. 
 descriptivenames <- merge(summarydata,activitylabels,by="V1")
-library(plyr)
 descriptivenames <- rename(descriptivenames,c("V1"="activityid","V2"="activityname"))
 
 #Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 
+variables<-c(colnames(meandata),colnames(stddata))
+ids<-c("subjects","activityname")
+melted <- melt(descriptivenames,id.vars=ids,measure.vars=variables)
 result <- dcast(melted,subjects+activityname~variable,mean)
 newnames<-gsub("(^[f])","frequency.",colnames(result))
 newnames<-gsub("(^[t])","time.",newnames)
@@ -44,7 +49,7 @@ newnames<-tolower(newnames)
 
 colnames(result) <- newnames
 
-
+write.table(x=result,file="tidy.txt")
 
 
 
