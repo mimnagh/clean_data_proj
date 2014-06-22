@@ -19,6 +19,9 @@ The "subjects" represents the anonymized id of the participent of the study. The
 -bodyaccjerkmag: Magnitude of the Jerk Body (excluding gravity) Acceleration in standard gravity units 'g'
 -bodygyromag: Magnitude of the Body (excluding gravity) Angular Acceleration from the gryroscope in rad/sec^2
 -bodygyrojerkmag: Magnitude of the Jerk Body (excluding gravity) Angular Acceleration from the gryroscope in rad/sec^2
+-bodybodyaccjerkmag: Magnitude of the Jerk Body to Body (excluding gravity) Acceleration in standard gravity units 'g'
+-bodybodygyromag: Magnitude of the Body to Body (excluding gravity) Angular Acceleration from the gryroscope in rad/sec^2
+-bodybodygyrojerkmag: Magnitude of the Jerk Body to Body (excluding gravity) Angular Acceleration from the gryroscope in rad/sec^2
 
 Some useful deatils from the study are outlined below.
 
